@@ -5,7 +5,7 @@
 </head>
 <body>
 <div style="border: 2px solid #333; display: inline-block; margin: 10px;">
-<canvas id="gameCanvas" width="530" height="400"></canvas>
+<canvas id="gameCanvas" width="600" height="600"></canvas>
     </div>
     <br>
     <button onclick="resetGame()" style="padding: 10px 20px; font-size: 18px; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
@@ -44,9 +44,9 @@
 
         // 游戏状态
         let snake = [
-            {x: 400, y: 400},
-            {x: 350, y: 400},
-            {x: 300, y: 400}
+            {x: 300, y: 300},
+            {x: 250, y: 300},
+            {x: 200, y: 300}
         ];
         let food = {x: 0, y: 0};
         let direction = 'right';
@@ -78,7 +78,7 @@
         // 生成食物
         function generateFood() {
             food.x = Math.floor(Math.random() * 12) * 50;
-            food.y = Math.floor(Math.random() * 9) * 50;
+            food.y = Math.floor(Math.random() * 12) * 50;
         }
 
         // 游戏主循环
@@ -112,7 +112,7 @@
         function checkCollision() {
             const head = snake[0];
             // 边界检测
-            if (head.x < 0 || head.x >= 530 || head.y < 0 || head.y >= 400) {
+            if (head.x < 0 || head.x >= 600 || head.y < 0 || head.y >= 600) {
                 gameOver();
             }
             // 自身碰撞
@@ -152,7 +152,9 @@ function gameOver() {
 }
 
 function resetGame() {
-    snake = [{x: 400, y: 400}];
+    snake = [
+        {x: 300, y: 300}
+    ];
     direction = 'right';
     score = 0;
     generateFood();
